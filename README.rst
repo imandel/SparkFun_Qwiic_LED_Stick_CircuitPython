@@ -36,35 +36,50 @@ Installing from PyPI
 .. note:: This library is not available on PyPI yet. Install documentation is included
    as a standard element. Stay tuned for PyPI availability!
 
-.. todo:: Remove the above note if PyPI version is/will be available at time of release.
-   If the library is not planned for PyPI, remove the entire 'Installing from PyPI' section.
+   .. code-block:: shell
+    pip install git+https://github.com/imandel/SparkFun_Qwiic_LED_Stick_CircuitPython.git
 
-On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
-PyPI <https://pypi.org/project/adafruit-circuitpython-sparkfun_qwiic_led_stick_circuitpython/>`_. To install for current user:
 
-.. code-block:: shell
+..    If the library is not planned for PyPI, remove the entire 'Installing from PyPI' section.
 
-    pip3 install adafruit-circuitpython-sparkfun-qwiic-led-stick-circuitpython
+.. On supported GNU/Linux systems like the Raspberry Pi, you can install the driver locally `from
+.. PyPI <https://pypi.org/project/adafruit-circuitpython-sparkfun_qwiic_led_stick_circuitpython/>`_. To install for current user:
 
-To install system-wide (this may be required in some cases):
+.. .. code-block:: shell
 
-.. code-block:: shell
+..     pip3 install adafruit-circuitpython-sparkfun-qwiic-led-stick-circuitpython
 
-    sudo pip3 install adafruit-circuitpython-sparkfun-qwiic-led-stick-circuitpython
+.. To install system-wide (this may be required in some cases):
 
-To install in a virtual environment in your current project:
+.. .. code-block:: shell
 
-.. code-block:: shell
+..     sudo pip3 install adafruit-circuitpython-sparkfun-qwiic-led-stick-circuitpython
 
-    mkdir project-name && cd project-name
-    python3 -m venv .env
-    source .env/bin/activate
-    pip3 install adafruit-circuitpython-sparkfun-qwiic-led-stick-circuitpython
+.. To install in a virtual environment in your current project:
+
+.. .. code-block:: shell
+
+..     mkdir project-name && cd project-name
+..     python3 -m venv .env
+..     source .env/bin/activate
+..     pip3 install adafruit-circuitpython-sparkfun-qwiic-led-stick-circuitpython
 
 Usage Example
 =============
+   .. code-block:: python
+    import board
+    import busio
+    from adafruit_bus_device.i2c_device import I2CDevice
+    from Sparkfun_Qwiic_LED_Stick_CircuitPython import LED_Stick
 
-.. todo:: Add a quick, simple example. It and other examples should live in the examples folder and be included in docs/examples.rst.
+    i2c = busio.I2C(board.SCL, board.SDA)
+    stick = LED_Stick(i2c)
+
+    #set entire strip
+    stick.set_LED_color(0,255,0)
+
+    #set second LED
+    stick.set_LED_color(255,0,0, 2).. .. 
 
 Contributing
 ============
